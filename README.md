@@ -10,7 +10,7 @@ npm i rd-react-overlay --save
 
 ## Code Example
 
-#### [Demo](https://rd-dev-ukraine.github.io/angular-io-overlay/)
+#### [Demo](https://rd-dev-ukraine.github.io/rd-react-overlay/)
 
 First of all you'll need to add `OverlayContainer, Overlay, Alignment, AlignType` to your application module.
 
