@@ -28,7 +28,7 @@ module.exports = {
         preLoaders: [{ test: /\.js$/, loader: "source-map-loader" }]
     },
     externals: {
-        "react": "require('react')",
-        "react-dom": "require('react-dom')"
+        "react": "React",
+        "react-dom": "ReactDOM"
     },
 };
