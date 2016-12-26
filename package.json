@@ -6,6 +6,8 @@
   "keywords": [
     "react",
     "reactdom",
+    "tsx",
+    "jsx",
     "overlay",
     "popup",
     "component"
