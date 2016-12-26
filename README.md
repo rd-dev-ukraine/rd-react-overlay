@@ -47,7 +47,7 @@ interface ComponentState {
 
 After that you should add this template to component render:
 
-```typescript jsx
+```html
 <OverlayContainer>
     <button type="button" onClick={() => this.setState({visible: true})}>Open popup</button>
     <Overlay visible={this.state.visible}
