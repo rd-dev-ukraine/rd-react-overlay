@@ -55,13 +55,13 @@
 /* 1 */
 /***/ function(module, exports) {
 
-	module.exports = React;
+	module.exports = require('react');
 
 /***/ },
 /* 2 */
 /***/ function(module, exports) {
 
-	module.exports = ReactDOM;
+	module.exports = require('react-dom');
 
 /***/ },
 /* 3 */
