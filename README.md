@@ -71,11 +71,11 @@ This styles `<div style={({position: 'absolute', top: top, left: left})}>` gener
 
 ## API Reference
 
-|Property        |Type                                 |Default                                                               |Description                                         |
-| :------------- | :---------------------------------- | :------------------------------------------------------------------- | :------------------------------------------------- |
-|`visible`       |boolean                              |`undefined`                                                           |Visible state for content in the <Overlay></Overlay>|
-|`alignment`     |Alignment                            |`defaultAlign: Alignment = {element: {horizontal: AlignType.Left,vertical: AlignType.Top},target: {horizontal: AlignType.Left,vertical: AlignType.Bottom}};`|Align popup with |
-|`onClickOutside`|(ClickedOnContainer: boolean) => void|`(clickedOnContainer) => this.setState({visible: clickedOnContainer})`|Close popup if clicked out of popup and container.  |
+|Property        |Type                                   |Default                                                               |Description                                         |
+| :------------- | :------------------------------------ | :------------------------------------------------------------------- | :------------------------------------------------- |
+|`visible`       |boolean                                |`undefined`                                                           |Visible state for content in the <Overlay></Overlay>|
+|`alignment`     |Alignment                              |`defaultAlign: Alignment = {element: {horizontal: AlignType.Left,vertical: AlignType.Top},target: {horizontal: AlignType.Left,vertical: AlignType.Bottom}};`|Align popup with |
+|`onClickOutside`|`(ClickedOnContainer: boolean) => void`|`(clickedOnContainer) => this.setState({visible: clickedOnContainer})`|Close popup if clicked out of popup and container.  |
 
 
 ## License
