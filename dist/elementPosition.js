@@ -25,7 +25,7 @@ function alignContainer(element, target, alignment) {
 exports.alignContainer = alignContainer;
 function rectFromElement(element) {
     if (!element) {
-        throw new Error('Element is undefined.');
+        throw new Error("Element is undefined.");
     }
     var position = {
         left: 0,

@@ -3,7 +3,6 @@ import * as React from "react";
 import { Alignment } from "./positioning";
 export declare type PositionProperty = "absolute" | "fixed" | "relative";
 export interface OverlayProps {
-    target?: Element;
     children: (top: number, left: number) => React.DOMElement<{
         style: {
             position: PositionProperty;

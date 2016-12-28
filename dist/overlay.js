@@ -67,7 +67,8 @@ var Overlay = (function (_super) {
             }
             ReactDom.render(this.props.children(this.state.left, this.state.top), this.wrapper);
             this.host = this.wrapper.children[0];
-            this.target = ReactDom.findDOMNode(this.props.target);
+            // props.target is set by OverlayContainer
+            this.target = ReactDom.findDOMNode(this.props["target"]);
             var _a = elementPosition_1.alignContainer(this.host, this.target, this.props.alignment), top_1 = _a.top, left = _a.left;
             if (this.state.top !== top_1 || this.state.left !== left) {
                 this.setState({ top: top_1, left: left });

@@ -6,7 +6,6 @@ import { Alignment } from "./positioning";
 export type PositionProperty = "absolute" | "fixed" | "relative";
 
 export interface OverlayProps {
-    target?: Element;
     children: (top: number, left: number) => React.DOMElement<{ style: { position: PositionProperty, top: number, left: number } }, any>;
     onClickOutside?: (clickedOnContainer: boolean) => void;
     alignment?: Alignment;
@@ -94,7 +93,8 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
             );
 
             this.host = this.wrapper.children[0] as HTMLElement;
-            this.target = ReactDom.findDOMNode(this.props.target as any) as HTMLElement;
+            // props.target is set by OverlayContainer
+            this.target = ReactDom.findDOMNode((this.props as any)["target"]) as HTMLElement;
 
             const {top, left} = alignContainer(this.host, this.target, this.props.alignment);
 

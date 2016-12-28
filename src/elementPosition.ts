@@ -1,4 +1,4 @@
-import { Alignment, Point, position, Rect, AlignType } from './positioning';
+import { Alignment, Point, position, Rect, AlignType } from "./positioning";
 
 const defaultAlignment: Alignment = {
     target: {
@@ -29,7 +29,7 @@ export function alignContainer(element: HTMLElement, target: HTMLElement, alignm
 
 function rectFromElement(element: HTMLElement): Rect {
     if (!element) {
-        throw new Error('Element is undefined.');
+        throw new Error("Element is undefined.");
     }
 
     let position: Point = {
