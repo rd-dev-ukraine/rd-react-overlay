@@ -1,29 +1,29 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { alignContainer } from './elementPosition';
-import { Alignment } from './positioning';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { alignContainer } from "./elementPosition";
+import { Alignment } from "./positioning";
 
-type positionProperty = 'absolute' | 'fixed' | 'relative';
+export type PositionProperty = "absolute" | "fixed" | "relative";
 
-interface OverlayProps {
+export interface OverlayProps {
     target?: Element;
-    children?: (top: number, left: number) => React.DOMElement<{style: {position: positionProperty, top: number, left: number}}, any>;
+    children: (top: number, left: number) => React.DOMElement<{ style: { position: PositionProperty, top: number, left: number } }, any>;
     onClickOutside?: (clickedOnContainer: boolean) => void;
     alignment?: Alignment;
     visible: boolean;
 }
 
-interface OverlayState {
+export interface OverlayState {
     top: number;
     left: number;
 }
 
 export class Overlay extends React.Component<OverlayProps, OverlayState> {
-    wrapper: HTMLElement;
-    host: HTMLElement;
-    target: HTMLElement;
+    wrapper: HTMLElement | null;
+    host: HTMLElement | null;
+    target: HTMLElement | null;
 
-    constructor(props) {
+    constructor(props: OverlayProps) {
         super(props);
 
         this.state = {
@@ -41,27 +41,28 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
      * Close popup on click outside of popup and container
      */
     private closeOnClickHandler = (e: MouseEvent) => {
-        if (e.target && e.target['nodeType'] === 1) {
+        if (e.target && ((e.target as any)["nodeType"]) === 1) {
             const targetElement = e.target as Element;
             if (!this.isDOMParent(targetElement, this.host)) {
                 if (this.isDOMParent(targetElement, this.target)) {
-                    this.props.onClickOutside(true);
+                    if (this.props.onClickOutside) {
+                        this.props.onClickOutside(true);
+                    }
                 }
-                this.props.onClickOutside(false);
-                window.removeEventListener('mousedown', this.closeOnClickHandler);
+                if (this.props.onClickOutside) {
+                    this.props.onClickOutside(false);
+                }
+                window.removeEventListener("mousedown", this.closeOnClickHandler);
             }
         }
     };
 
     /**
-     * Gets the value indicating whether @{parent} is direct or indirect parent node of the specified @{element}.
+     * Gets the value indicating whether parent is direct or indirect parent node of the specified element.
      */
-    private isDOMParent(element: Element, parent: Element): boolean {
-        if (element !== null && !element) {
-            throw new Error('Element is required.');
-        }
-        if (parent !== null && !parent) {
-            throw new Error('Parent is required.');
+    private isDOMParent(element: Element | null, parent: Element | null): boolean {
+        if (!element || !parent) {
+            return false;
         }
 
         if (element === parent) {
@@ -78,12 +79,12 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     private renderPopup(): void {
         if (this.props.visible !== false) {
             if (!this.wrapper) {
-                this.wrapper = document.createElement('div');
+                this.wrapper = document.createElement("div");
                 document.body.appendChild(this.wrapper);
-                window.addEventListener('resize', this.resizeHandler);
+                window.addEventListener("resize", this.resizeHandler);
 
                 if (this.props.onClickOutside) {
-                    window.addEventListener('mousedown', this.closeOnClickHandler);
+                    window.addEventListener("mousedown", this.closeOnClickHandler);
                 }
             }
 
@@ -93,16 +94,16 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
             );
 
             this.host = this.wrapper.children[0] as HTMLElement;
-            this.target = ReactDom.findDOMNode(this.props.target) as HTMLElement;
+            this.target = ReactDom.findDOMNode(this.props.target as any) as HTMLElement;
 
             const {top, left} = alignContainer(this.host, this.target, this.props.alignment);
 
             if (this.state.top !== top || this.state.left !== left) {
-                this.setState({top, left});
+                this.setState({ top, left });
             }
         } else if (this.props.visible === false && this.wrapper) {
-            window.removeEventListener('resize', this.resizeHandler);
-            window.removeEventListener('mousedown', this.closeOnClickHandler);
+            window.removeEventListener("resize", this.resizeHandler);
+            window.removeEventListener("mousedown", this.closeOnClickHandler);
 
             document.body.removeChild(this.wrapper);
             ReactDom.unmountComponentAtNode(this.wrapper);
