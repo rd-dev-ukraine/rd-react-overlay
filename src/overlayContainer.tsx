@@ -14,7 +14,7 @@ export class OverlayContainer extends React.Component<React.HTMLProps<HTMLDivEle
         return (
             <div ref="target" {...this.props}>
                 {content}
-                {React.cloneElement(overlayRef, {target: this.refs["target"]})}
+                {overlayRef && React.cloneElement(overlayRef, {target: this.refs["target"]})}
             </div>
         )
     }

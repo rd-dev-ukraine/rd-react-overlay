@@ -25,7 +25,7 @@ var OverlayContainer = (function (_super) {
         var content = children.filter(function (item) { return item.type !== overlay_1.Overlay; });
         return (React.createElement("div", __assign({ ref: "target" }, this.props),
             content,
-            React.cloneElement(overlayRef, { target: this.refs["target"] })));
+            overlayRef && React.cloneElement(overlayRef, { target: this.refs["target"] })));
     };
     return OverlayContainer;
 }(React.Component));
