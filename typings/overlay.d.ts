@@ -23,6 +23,10 @@ export declare class Overlay extends React.Component<OverlayProps, OverlayState>
     host: HTMLElement | null;
     target: HTMLElement | null;
     constructor(props: OverlayProps);
+    componentDidMount(): void;
+    componentDidUpdate(): void;
+    componentWillUnmount(): void;
+    render(): null;
     /**
      * Rerender popup to get new top and left
      */
@@ -36,7 +40,5 @@ export declare class Overlay extends React.Component<OverlayProps, OverlayState>
      */
     private isDOMParent(element, parent);
     private renderPopup();
-    componentDidMount(): void;
-    componentDidUpdate(): void;
-    render(): JSX.Element;
+    private removePopup();
 }

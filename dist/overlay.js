@@ -40,6 +40,18 @@ var Overlay = (function (_super) {
         };
         return _this;
     }
+    Overlay.prototype.componentDidMount = function () {
+        this.renderPopup();
+    };
+    Overlay.prototype.componentDidUpdate = function () {
+        this.renderPopup();
+    };
+    Overlay.prototype.componentWillUnmount = function () {
+        this.removePopup();
+    };
+    Overlay.prototype.render = function () {
+        return null;
+    };
     /**
      * Gets the value indicating whether parent is direct or indirect parent node of the specified element.
      */
@@ -75,21 +87,17 @@ var Overlay = (function (_super) {
             }
         }
         else if (this.props.visible === false && this.wrapper) {
-            window.removeEventListener("resize", this.resizeHandler);
-            window.removeEventListener("mousedown", this.closeOnClickHandler);
+            this.removePopup();
+        }
+    };
+    Overlay.prototype.removePopup = function () {
+        window.removeEventListener("resize", this.resizeHandler);
+        window.removeEventListener("mousedown", this.closeOnClickHandler);
+        if (this.wrapper) {
             document.body.removeChild(this.wrapper);
             ReactDom.unmountComponentAtNode(this.wrapper);
             this.wrapper = null;
         }
-    };
-    Overlay.prototype.componentDidMount = function () {
-        this.renderPopup();
-    };
-    Overlay.prototype.componentDidUpdate = function () {
-        this.renderPopup();
-    };
-    Overlay.prototype.render = function () {
-        return React.createElement("noscript", null);
     };
     return Overlay;
 }(React.Component));

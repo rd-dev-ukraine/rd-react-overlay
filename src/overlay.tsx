@@ -31,6 +31,22 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
         };
     }
 
+    componentDidMount() {
+        this.renderPopup();
+    }
+
+    componentDidUpdate() {
+        this.renderPopup();
+    }
+
+    componentWillUnmount() {
+        this.removePopup();
+    }
+
+    render() {
+        return null;
+    }
+
     /**
      * Rerender popup to get new top and left
      */
@@ -102,24 +118,18 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
                 this.setState({ top, left });
             }
         } else if (this.props.visible === false && this.wrapper) {
-            window.removeEventListener("resize", this.resizeHandler);
-            window.removeEventListener("mousedown", this.closeOnClickHandler);
+            this.removePopup();
+        }
+    }
 
+    private removePopup(): void {
+        window.removeEventListener("resize", this.resizeHandler);
+        window.removeEventListener("mousedown", this.closeOnClickHandler);
+
+        if (this.wrapper) {
             document.body.removeChild(this.wrapper);
             ReactDom.unmountComponentAtNode(this.wrapper);
             this.wrapper = null;
         }
-    }
-
-    componentDidMount() {
-        this.renderPopup();
-    }
-
-    componentDidUpdate() {
-        this.renderPopup();
-    }
-
-    render() {
-        return <noscript></noscript>
     }
 }
