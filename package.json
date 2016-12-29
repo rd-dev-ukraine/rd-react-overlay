@@ -1,6 +1,6 @@
 {
   "name": "rd-react-overlay",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Overlay component that allows open a component in popup for React.js",
   "main": "./dist/index.js",
   "typings": "./typings/index.d.ts",
