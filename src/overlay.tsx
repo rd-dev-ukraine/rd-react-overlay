@@ -6,7 +6,6 @@ import { Alignment } from "./positioning";
 export type PositionProperty = "absolute" | "fixed" | "relative";
 
 export interface OverlayProps {
-    children: (top: number, left: number) => React.DOMElement<{ style: { position: PositionProperty, top: number, left: number } }, any>;
     onClickOutside?: (clickedOnContainer: boolean) => void;
     alignment?: Alignment;
     visible: boolean;
@@ -76,6 +75,8 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     }
 
     private renderPopup(): void {
+        const renderChildren = (left: number, top: number) => (this.props.children as any)(left, top);
+
         if (this.props.visible !== false) {
             if (!this.wrapper) {
                 this.wrapper = document.createElement("div");
@@ -88,7 +89,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
             }
 
             ReactDom.render(
-                this.props.children(this.state.left, this.state.top),
+                renderChildren(this.state.left, this.state.top),
                 this.wrapper
             );
 
