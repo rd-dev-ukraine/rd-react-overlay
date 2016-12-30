@@ -3,13 +3,6 @@ import * as React from "react";
 import { Alignment } from "./positioning";
 export declare type PositionProperty = "absolute" | "fixed" | "relative";
 export interface OverlayProps {
-    children: (top: number, left: number) => React.DOMElement<{
-        style: {
-            position: PositionProperty;
-            top: number;
-            left: number;
-        };
-    }, any>;
     onClickOutside?: (clickedOnContainer: boolean) => void;
     alignment?: Alignment;
     visible: boolean;

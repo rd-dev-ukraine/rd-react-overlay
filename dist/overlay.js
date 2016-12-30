@@ -68,6 +68,8 @@ var Overlay = (function (_super) {
         return this.isDOMParent(element.parentElement, parent);
     };
     Overlay.prototype.renderPopup = function () {
+        var _this = this;
+        var renderChildren = function (left, top) { return _this.props.children(left, top); };
         if (this.props.visible !== false) {
             if (!this.wrapper) {
                 this.wrapper = document.createElement("div");
@@ -77,7 +79,7 @@ var Overlay = (function (_super) {
                     window.addEventListener("mousedown", this.closeOnClickHandler);
                 }
             }
-            ReactDom.render(this.props.children(this.state.left, this.state.top), this.wrapper);
+            ReactDom.render(renderChildren(this.state.left, this.state.top), this.wrapper);
             this.host = this.wrapper.children[0];
             // props.target is set by OverlayContainer
             this.target = ReactDom.findDOMNode(this.props["target"]);
