@@ -6,10 +6,8 @@ npm-debug.log
 public
 build
 
-# Angular
-src/App.tsx
+# React
 src/index.css
-src/index.tsx
 
 # OS generated files
 Thumbs.db
@@ -22,5 +20,6 @@ tsconfig.publish.json
 tslint.json
 yarn.lock
 *.ts
+*.tsx
 !*.d.ts
 .gitignore
