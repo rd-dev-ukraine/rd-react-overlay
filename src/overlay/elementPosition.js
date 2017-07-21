@@ -28,19 +28,19 @@ function rectFromElement(element) {
     if (!element) {
         throw new Error("Element is undefined.");
     }
-    var position = {
+    var positionElement = {
         left: 0,
         top: 0
     };
     var current = element;
     do {
-        position.left += current.offsetLeft;
-        position.top += current.offsetTop;
+        positionElement.left += current.offsetLeft;
+        positionElement.top += current.offsetTop;
         current = current.offsetParent;
     } while (current);
     return {
-        left: position.left,
-        top: position.top,
+        left: positionElement.left,
+        top: positionElement.top,
         width: element.offsetWidth,
         height: element.offsetHeight
     };

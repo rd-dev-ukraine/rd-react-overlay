@@ -37,7 +37,7 @@ var Overlay = (function (_super) {
                     if (_this.props.onClickOutside) {
                         _this.props.onClickOutside(false);
                     }
-                    window.removeEventListener("mousedown", _this.closeOnClickHandler);
+                    window.removeEventListener("mouseup", _this.closeOnClickHandler);
                 }
             }
         };
@@ -85,7 +85,7 @@ var Overlay = (function (_super) {
                 document.body.appendChild(this.wrapper);
                 window.addEventListener("resize", this.resizeHandler);
                 if (this.props.onClickOutside) {
-                    window.addEventListener("mousedown", this.closeOnClickHandler);
+                    window.addEventListener("mouseup", this.closeOnClickHandler);
                 }
             }
             ReactDom.render(renderChildren(this.state.left, this.state.top), this.wrapper);
@@ -103,17 +103,17 @@ var Overlay = (function (_super) {
     };
     Overlay.prototype.removePopup = function () {
         window.removeEventListener("resize", this.resizeHandler);
-        window.removeEventListener("mousedown", this.closeOnClickHandler);
+        window.removeEventListener("mouseup", this.closeOnClickHandler);
         if (this.wrapper) {
             document.body.removeChild(this.wrapper);
             ReactDom.unmountComponentAtNode(this.wrapper);
             this.wrapper = null;
         }
     };
+    Overlay.contextTypes = {
+        target: PropTypes.any
+    };
     return Overlay;
 }(React.Component));
-Overlay.contextTypes = {
-    target: PropTypes.any
-};
 exports.Overlay = Overlay;
 //# sourceMappingURL=overlay.js.map

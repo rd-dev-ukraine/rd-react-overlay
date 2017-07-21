@@ -1,13 +1,13 @@
 /// <reference types="react" />
 import * as React from "react";
 import * as PropTypes from "prop-types";
-export declare class OverlayContainer extends React.Component<React.HTMLProps<HTMLDivElement>, void> {
+export declare class OverlayContainer extends React.Component<React.HTMLProps<HTMLDivElement>, {}> {
     static childContextTypes: {
         target: PropTypes.Requireable<any>;
     };
     private target;
     getChildContext(): {
-        target: Element;
+        target: HTMLDivElement | null;
     };
-    render(): React.ReactElement<React.HTMLProps<HTMLDivElement>>;
+    render(): JSX.Element;
 }

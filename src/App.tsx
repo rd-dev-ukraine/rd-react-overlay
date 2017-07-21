@@ -28,7 +28,7 @@ export default class App extends React.Component<{}, AppState> {
         };
     }
 
-    public render(): React.ReactElement<{}> {
+    public render() {
         return (
             <OverlayContainer>
                 <div style={({ width: "100px" })} onClick={() => this.setState({ visible: true })}>

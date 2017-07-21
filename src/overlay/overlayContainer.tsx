@@ -2,9 +2,9 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 
 
-export class OverlayContainer extends React.Component<React.HTMLProps<HTMLDivElement>, void> {
+export class OverlayContainer extends React.Component<React.HTMLProps<HTMLDivElement>, {}> {
     public static childContextTypes = { target: PropTypes.any };
-    private target: Element;
+    private target: HTMLDivElement | null;
 
     public getChildContext() {
         return {
@@ -12,7 +12,7 @@ export class OverlayContainer extends React.Component<React.HTMLProps<HTMLDivEle
         };
     }
 
-    public render(): React.ReactElement<React.HTMLProps<HTMLDivElement>> {
+    public render() {
         return (
             <div ref={a => this.target = a} {...this.props}>
                 {this.props.children}

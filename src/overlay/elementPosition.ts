@@ -36,7 +36,7 @@ function rectFromElement(element: HTMLElement): Rect {
         throw new Error("Element is undefined.");
     }
 
-    let position: Point = {
+    let positionElement: Point = {
         left: 0,
         top: 0
     };
@@ -44,15 +44,15 @@ function rectFromElement(element: HTMLElement): Rect {
     let current = element;
 
     do {
-        position.left += current.offsetLeft;
-        position.top += current.offsetTop;
+        positionElement.left += current.offsetLeft;
+        positionElement.top += current.offsetTop;
         current = current.offsetParent as HTMLElement;
     }
     while (current);
 
     return {
-        left: position.left,
-        top: position.top,
+        left: positionElement.left,
+        top: positionElement.top,
         width: element.offsetWidth,
         height: element.offsetHeight
     };

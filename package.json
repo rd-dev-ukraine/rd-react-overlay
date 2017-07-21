@@ -1,6 +1,6 @@
 {
   "name": "rd-react-overlay",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "Overlay component that allows open a component in popup for React.js",
   "main": "./src/overlay/index.js",
   "typings": "./src/overlay/index.d.ts",
@@ -24,18 +24,18 @@
   "author": "Sergey Tokarev <sergey.tokarev@rd-dev.net>",
   "license": "MIT",
   "dependencies": {
-    "@types/jest": "^19.2.3",
-    "@types/node": "^7.0.22",
-    "@types/prop-types": "^15.5.1",
-    "@types/react": "^15.0.25",
-    "@types/react-dom": "^15.5.0",
-    "gh-pages": "^1.0.0",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "react-scripts-ts": "2.2.0"
+    "react-scripts-ts": "2.4.0",
+    "gh-pages": "^1.0.0",
+    "@types/jest": "^19.2.3",
+    "@types/node": "^7.0.22",
+    "@types/prop-types": "^15.5.1",
+    "@types/react": "^15.0.25",
+    "@types/react-dom": "^15.5.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",

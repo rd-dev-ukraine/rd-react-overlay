@@ -76,7 +76,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
                 if (this.props.onClickOutside) {
                     this.props.onClickOutside(false);
                 }
-                window.removeEventListener("mousedown", this.closeOnClickHandler);
+                window.removeEventListener("mouseup", this.closeOnClickHandler);
             }
         }
     }
@@ -111,7 +111,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
                 window.addEventListener("resize", this.resizeHandler);
 
                 if (this.props.onClickOutside) {
-                    window.addEventListener("mousedown", this.closeOnClickHandler);
+                    window.addEventListener("mouseup", this.closeOnClickHandler);
                 }
             }
 
@@ -137,7 +137,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
 
     private removePopup(): void {
         window.removeEventListener("resize", this.resizeHandler);
-        window.removeEventListener("mousedown", this.closeOnClickHandler);
+        window.removeEventListener("mouseup", this.closeOnClickHandler);
 
         if (this.wrapper) {
             document.body.removeChild(this.wrapper);

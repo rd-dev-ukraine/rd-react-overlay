@@ -34,8 +34,8 @@ var OverlayContainer = (function (_super) {
         var _this = this;
         return (React.createElement("div", __assign({ ref: function (a) { return _this.target = a; } }, this.props), this.props.children));
     };
+    OverlayContainer.childContextTypes = { target: PropTypes.any };
     return OverlayContainer;
 }(React.Component));
-OverlayContainer.childContextTypes = { target: PropTypes.any };
 exports.OverlayContainer = OverlayContainer;
 //# sourceMappingURL=overlayContainer.js.map
